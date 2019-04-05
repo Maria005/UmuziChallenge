@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    Assessment
+  </head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+  <body>
+    <h1>JavaScript Challenge!</h1>
+    <ol>
+    <li>Write a JavaScript program to display the current day and time. </li>
+ <li>Write a JavaScript program to get the website URL (loading page).</li>
+ <li>Write a JavaScript program to check if a string starts with 'Java' and false otherwise.</li>                                                                                                    
+ <li>Write a JavaScript program to find the largest of three given integers.</li>
+ <li>Write a JavaScript program to capitalize the first letter of each word of a given string.</li>
+ <li>Write a JavaScript program to convert a given number to hours and minutes.</li>
+  </ol>  
+    
+    <p id="test"></p>
+    <p id="day"></p>
+    <p id="time"></p>
+    <p id="converter"></p>
+    
+  </body>
+  <script src="script.js"></script>
+<script>
+  
+
+//var getDate = new Date();
+//document.getElementById("test").innerHTML = "Today is: "+getDayOfWeek(new Date())+" "+"Current time is: "+hour + prepand + " : " + minute + " : " + second);
+
+var today = new Date();
+  var day = today.getDay();
+  var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
+  console.log("Today is : " + daylist[day] + ".");
+  document.getElementById("day").innerHTML = "Today is : " + daylist[day] + ".";
+  
+  var hour = today.getHours();
+  var minute = today.getMinutes();
+  var second = today.getSeconds();
+  var prepand = (hour >= 12)? " PM ":" AM ";
+  hour = (hour >= 12)? hour - 12: hour;
+  if (hour===0 && prepand===' PM ') 
+  { 
+  if (minute===0 && second===0)
+  { 
+  hour=12;
+  prepand=' Noon';
+  } 
+  else
+  { 
+  hour=12;
+  prepand=' PM';
+  } 
+  } 
+  if (hour===0 && prepand===' AM ') 
+  { 
+  if (minute===0 && second===0)
+  { 
+  hour=12;
+  prepand=' Midnight';
+  } 
+  else
+  { 
+  hour=12;
+  prepand=' AM';
+  } 
+  } 
+console.log("Current time is : "+hour + prepand + " : " + minute + " : " + second);
+document.getElementById("time").innerHTML = "Current time is : "+hour + prepand + " : " + minute + " : " + second;
+
+console.log(document.URL);
+
+
+function start_spec_str(str)
+{
+  if (str.length < 4)
+  {
+    return false;
+  }
+  front = str.substring(0, 4);
+  if (front == 'Java') 
+  {
+    return true;
+  }
+   else 
+   {
+    return false;
+  }
+}
+console.log(start_spec_str("Java"));
+
+
+function max_of_three(x, y, z) 
+ {
+  max_val = 0;
+  if (x > y)
+  {
+    max_val = x;
+  } else
+  {
+    max_val = y;
+  }
+  if (z > max_val) 
+  {
+    max_val = z;
+  }
+  return max_val;
+}
+console.log(max_of_three(1002,-102,1020));
+
+function capital_letter(str) 
+{
+    str = str.split(" ");
+
+    for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    return str.join(" ");
+}
+
+console.log(capital_letter("Bootcamp is where you learn about javascript."));
+
+document.getElementById("time").innerHTML = capital_letter("Bootcamp is where you learn about javascript.");
+
+function time_convert(num)
+ { 
+  var hours = Math.floor(num / 60);  
+  var minutes = num % 60;
+  return hours + ":" + minutes;         
+}
+
+console.log(time_convert(5805));
+document.getElementById("converter").innerHTML = time_convert(5805);
+
+</script>
+</html>
